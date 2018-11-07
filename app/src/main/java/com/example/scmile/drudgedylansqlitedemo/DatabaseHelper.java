@@ -33,9 +33,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(LAST, last);
         values.put(GRADE, grade);
 
-        db.insert(NAME, null, values);
-        
-        return true;
+        long result =  db.insert(NAME, null, values);
+
+        if (result == -1) return false;
+        else return  true;
     }
     @Override
     public void onCreate(SQLiteDatabase db) {
